@@ -39,4 +39,14 @@ public class ProfilesService
 
     return vaults.FindAll(v => v.isPrivate == false || v.creatorId != id);
   }
+
+
+
+  // internal Profile Update(Profile accountData, string userId)
+  // {
+  //   Profile user = _repo.GetById(accountData.Id);
+  //   user.Name = accountData.Name ?? accountData.Name;
+  //   user.Picture = accountData.Picture ?? accountData.Picture;
+  //   return _repo.Update(user);
+  // }
 }
