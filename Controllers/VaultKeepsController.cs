@@ -53,7 +53,21 @@ public class VaultKeepsController : ControllerBase
     }
   }
 
-
+  // [HttpGet]
+  // [Authorize]
+  // public async Task<ActionResult<List<VaultKeep>>> GetAllVaultKeeps()
+  // {
+  //   try
+  //   {
+  //     var userInfo = await _auth0provider.GetUserInfoAsync<Account>(HttpContext);
+  //     List<VaultKeep> keeps = _vks.GetAllVaultKeeps(userInfo.Id);
+  //     return Ok(keeps);
+  //   }
+  //   catch (Exception e)
+  //   {
+  //     return BadRequest(e.Message);
+  //   }
+  // }
 
   [HttpDelete("{vaultKeepId}")]
   [Authorize]

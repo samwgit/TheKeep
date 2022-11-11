@@ -77,4 +77,13 @@ public class KeepsRepository : BaseRepository
     return;
   }
 
+
+
+
+  public Keep incrementKeepViews(Keep keep, int id)
+  {
+    var sql = "UPDATE keeps SET views = views + 1 WHERE id = @Id;";
+    _db.Execute(sql, new { id });
+    return keep;
+  }
 }

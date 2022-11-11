@@ -54,4 +54,15 @@ public class KeepsService
     _keepsRepo.Delete(keepId);
   }
 
+
+
+  public Keep incrementKeepViews(Keep keep, int id)
+  {
+    _keepsRepo.incrementKeepViews(keep, id);
+    return keep;
+  }
+
+
+
+
 }

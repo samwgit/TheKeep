@@ -13,6 +13,10 @@ public class VaultKeepsService
   }
 
 
+  // internal List<VaultKeep> GetAllVaultKeeps(string userId)
+  // {
+  //   return _vaultKeepsRepo.GetAllVaultKeeps(userId);
+  // }
 
   internal VaultKeep CreateVaultKeep(VaultKeep newVaultKeep, string userId)
   {

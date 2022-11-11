@@ -56,6 +56,26 @@ public class KeepsController : ControllerBase
     }
   }
 
+
+  [HttpPut("{id}/views")]
+  [Authorize]
+  public async Task<ActionResult<Keep>> incrementKeepView([FromBody] Keep keep)
+  {
+    try
+    {
+      Account userInfo = await _auth0provider.GetUserInfoAsync<Account>(HttpContext);
+      Keep keepViewed = _ks.incrementKeepViews(keep, keep.Id);
+      return Ok(keepViewed);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+
+
+
   [HttpDelete("{keepId}")]
   [Authorize]
   public async Task<ActionResult<string>> DeleteKeep(int keepId)

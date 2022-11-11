@@ -36,8 +36,7 @@ public class ProfilesService
       throw new Exception("Test");
     }
     List<Vault> vaults = _repo.getUserVaults(id);
-
-    return vaults.FindAll(v => v.isPrivate == false || v.creatorId != id);
+    return vaults.FindAll(v => v.isPrivate == false || v.creatorId == id);
   }
 
 

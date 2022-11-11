@@ -16,7 +16,11 @@ public class VaultKeepsRepository : BaseRepository
   VALUES(@creatorId, @vaultId, @keepId);
   SELECT LAST_INSERT_ID()
   ;";
+
     int id = _db.ExecuteScalar<int>(sql, newVaultKeep);
+    string sql2 = "UPDATE keeps SET kept = kept + 1 WHERE id = @keepId;";
+    int keepId = newVaultKeep.keepId;
+    int id2 = _db.Execute(sql2, new { keepId });
     newVaultKeep.Id = id;
     // if (newVaultKeep.Creator == null)
     // {
@@ -55,4 +59,22 @@ public class VaultKeepsRepository : BaseRepository
       return vaultKeep;
     }, new { vaultKeepId }).FirstOrDefault();
   }
+
+
+
+
+  // public List<VaultKeep> GetAllVaultKeeps(string userId)
+  // {
+  //   string sql = @"
+  //   SELECT 
+  //   vk.*,
+  //   FROM vaultKeeps vk
+  //   WHERE vk.creatorId = @userId
+  //   ;";
+  //   return _db.Query<VaultKeep, Profile, VaultKeep>(sql, (vaultKeep, profile) =>
+  //   {
+  //     vaultKeep.Creator = profile;
+  //     return vaultKeep;
+  //   }, new { userId }).ToList();
+  // }
 }
